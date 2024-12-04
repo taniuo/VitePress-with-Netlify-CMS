@@ -10,7 +10,7 @@
   "scripts": {
     "update-routes": "node routes.js",
     "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
+    "docs:build": "npm run update-routes && vitepress build docs",
     "docs:serve": "vitepress serve docs"
   },
   "author": "tsutoringo (https://github.com/tsutoringo)",
