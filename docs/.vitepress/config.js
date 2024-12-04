@@ -17,7 +17,7 @@ module.exports = {
         		{
           		text: 'Posts',
           		// 自动生成 `docs/post` 目录下的文章目录
-          		children: ['/post/**']
+          		children: ['/post/']
         		}
       		],
       		// 其他路径可以保持 'auto' 或手动配置
