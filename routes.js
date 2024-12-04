@@ -49,3 +49,10 @@ function updateVitePressConfig(routes) {
 // 运行脚本
 const routes = generateRoutes();
 updateVitePressConfig(routes);
+//输出日志
+console.log("Starting to generate routes...");
+const routes = generateRoutes();
+console.log("Routes generated:", routes);
+console.log("Updating VitePress config...");
+updateVitePressConfig(routes);
+console.log("VitePress config updated");
