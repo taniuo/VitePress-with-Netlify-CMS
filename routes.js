@@ -9,12 +9,12 @@ function generateRoutes(baseDir = 'docs') {
       const filePath = path.join(dir, file);
       const stat = fs.statSync(filePath);
 
-      if (stat.isDirectory()) {
+      if (stat.isDirectory() && file !== 'public' && file !== '.vitepress') {
         walk(filePath);
       } else if (path.extname(file) === '.md') {
         // 生成路由路径
         let routePath = path.relative(baseDir, filePath);
-        routePath = routePath.replace(/README\.md$/, '');
+        routePath = routePath.replace(/index\.md$/, '');
         routePath = routePath.replace(/\.md$/, '.html');
 
         // 确保路由路径以斜杠开头
@@ -22,7 +22,7 @@ function generateRoutes(baseDir = 'docs') {
 
         // 生成路由对象
         routes.push({
-          text: path.basename(file, '.md'),
+          text: path.basename(file, '.md').charAt(0).toUpperCase() + path.basename(file, '.md').slice(1),
           link: routePath
         });
       }
@@ -35,7 +35,7 @@ function generateRoutes(baseDir = 'docs') {
 
 // 生成并更新VitePress配置
 function updateVitePressConfig(routes) {
-  const configPath = path.join('.vitepress', 'config.js');
+  const configPath = path.join(baseDir, '.vitepress', 'config.js');
   let configContent = fs.readFileSync(configPath, 'utf-8');
   
   // 假设我们要更新sidebar的配置
