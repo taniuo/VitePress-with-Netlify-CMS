@@ -1,4 +1,5 @@
 module.exports = {
+	theme: 'hope',
 	title: 'VitePress template',
 	description: 'A JAMstack website template with the VitePress and Netlify CMS config.',
 	themeConfig: {
